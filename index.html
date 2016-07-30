@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>换一批</title>
+
+	<script src="js/jquery-1.12.3.js"></script>
+	
+	<script>
+         $(function(){
+            var arr=[];
+         	$('a').map(function(){
+               return  $('a').attr('href');
+         	})
+         	
+         	$('.btn').on('click',function(){
+         		var aa=[
+         			{img:'images/5.jpg',src:"www.sb.com"},
+         			{img:'images/6.jpg',src:"www.sb.com"},
+
+         			{img:'images/7.jpg',src:"www.sb.com"},
+         			{img:'images/8.jpg',src:"www.sb.com"}
+         			
+
+         		]
+         		$('.one img').attr('src',function(i,old){
+                    return  aa[i].img;
+         		})
+         		$('.one a').attr('href',function(i,old){
+                    return  aa[i].src;
+         		});
+         	})
+
+        
+
+
+
+
+        // 点击放大图片
+        $('.one li').on('click',function(e){
+        	e.preventDefault();
+        	  $('.one').attr('display','none')
+        	$('.cart').css("display","block");
+
+              $('.cart').addClass('show');
+              $('.cart img').attr('src',$(this).find('img').attr('src'));
+              $('.cart').attr('data-id',$('this').index());
+        })
+
+        $('.cart .close').on('click',function(){
+        	$('.cart').removeClass('show');
+        	$('.cart').css("display","none");
+        })
+        var imgs=$('.one img');
+        $('.cart').on('click',function(e){
+        	$('.cart').on('mousedown',function(e){
+        	e.preventDefault();
+        		
+        	})
+        	var index=parseInt($(this).attr('data-id'));
+        	if(e.clientX>$(this).outerWidth(true)/2){
+        	index+=1;
+
+        }else{
+        	index-=1;
+        }
+        if(index===imgs.length){
+        	alert("最后一张了")
+        }
+        if(index==-1){
+        	index=0;
+        	alert("已经是第一张了")
+        }
+        	$('.cart').attr('data-id',index);
+        	$('.cart img').attr('src',imgs.eq(index).attr('src'));
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         })
+
+
+    
+
+
+
+ 
+	</script>
+</head>
+<body>
+	<div class="cart"><div class="rongqi"><img src="" alt=""></div>
+          <div class="close">关闭</div>
+	</div>
+	<div class="one">
+		<div class="btn">换一批</div>
+		<ul>
+			<li><a href="www.baidu.com" class="two"><img src="images/1.jpg" alt=""></a>
+                <div class="msk">嘿嘿</div>
+			</li>
+                
+			<li><a href="" class="two"><img src="images/2.jpg" alt=""></a>
+				<div class="msk">嘿嘿</div></li>
+			<li><a href="" class="two"><img src="images/3.jpg" alt=""></a>
+                <div class="msk">嘿嘿</div>
+              
+			</li>
+			<li><a href="" class="two"><img src="images/4.jpg" alt=""></a>
+
+                <div class="msk">嘿嘿</div>
+                  
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- <div class="four">
+
+		<form action="">
+			<table>
+				<tr>
+					<th>姓名</th>
+					<th>学号</th>
+					<td><input type="checkbox" id="che"></td>
+
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>01</td>
+					<td><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>02</td>
+					<td><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>03</td>
+					<td><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>04</td>
+					<td><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>05</td>
+					<td><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>陈瑞</td>
+					<td>06</td>
+					<td><input type="checkbox"></td>
+				</tr>
+			</table>
+				<input type="text" class='search' >
+
+		</form>
+	</div> -->
+
+
+</body>
+</html>
+<style>
+    .show{
+    	position: fixed;
+    	top:0px;
+    	left: 0px;
+    	width: 100%;
+    	height: 100%;
+    	background: #000;
+    	/*opacity: 0.8;*/
+    	z-index:10;
+
+    }
+    .close{
+    	width: 50px;
+    	height: 20px;
+    	position: absolute;
+    	right: 10px;
+    	top: 10px;
+    	background:#222;
+    	color:#fff;
+    	text-align: center;
+    	line-height: 20px;
+    	font-size: 10px;
+    	cursor: pointer;
+    }
+    .show .rongqi{
+    	width: 1300px;
+    	height: 1200px;
+    	margin: 0 auto;
+    	position: relative;
+    	/*background: red;*/
+    }
+    .rongqi img{
+    	
+    	max-width:100%;
+        max-height: 100%;
+    	position: absolute;
+    	left: 0px;
+    	top:0px;
+    	right:0px;
+        bottom:0px;
+        margin: 0 auto;
+    }
+   .four{
+   	margin-top: 55px;
+   	width: 402px;
+   	height: 202px;
+   }
+	.four table{
+		width: 400px;
+		height: 200px;
+		border:1px solid red;
+		text-align: center;
+
+	}
+	.search{
+		width: 400px;
+		height: 30px;
+		font-size: 22px;
+		text-align: center;
+		line-height: 30px;
+		background: #eee;
+		border: 1px solid red;
+		display: block;
+		margin-top: 380px;
+		margin-left: 20px;
+	}
+	table{
+		border-collapse: collapse;
+	}
+	tr td{
+		/*background: #ccc;*/
+		position: relative;
+		width: 98px;
+	}
+	
+	input{
+		/*-webkit-appearance:none;*/
+		/*position: relative;*/
+		outline:none;
+		position: absolute;
+		left: 0px;
+		bottom:0;
+		right:0;
+		top:0px;
+		margin: 0;
+	}
+	table input::after{
+		content:'';
+		display: :block;
+		outline: none;
+		background: red;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		left: 0px;
+		bottom:0;
+		right:0;
+		top:0px;
+		margin: 0;
+		background: red;
+		z-index:100;
+		border: 1px solid black;
+	}
+	table input:checked:after{
+		background: url(images/9.jpg);
+		background-repeat: no-repeat;
+		background-size: 20px 20px;
+	}
+	.hide{
+		transform:translateX(-100%);
+		opacity: 0;
+		height: 0px;
+		display: none;
+	}
+  table tr{
+  	transition:all 0.3s ease;
+  	transform:translateX(0) 
+  }
+	ul,li{
+		list-style:none;
+		padding: 0;
+		margin: 0;
+	}
+	.btn{
+		width: 60px;
+		height: 30px;
+		color: red;
+		background: orange;
+		font-size: 16px;
+		text-align: center;
+		line-height: 30px;
+		position: absolute;
+		right:10px;
+		bottom:2px;
+		cursor: pointer;
+	}
+	.one{
+		width: 600px;
+		height: 360px;
+		margin: 150px auto;
+		border: 2px solid red;
+		position: relative;
+	}
+	.two{
+		overflow: hidden;
+	}
+	li{
+		width: 296px;
+		margin: 2px;
+		float: left;
+		overflow: hidden;
+		position: relative;
+	}
+	li img{
+		width: 296px;
+		height: 146px;
+		transition:all 2.8s ease;
+	}
+	.one li a:hover img{
+		transform:scale(1.2,1.2);
+	}
+	.msk{
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		bottom:0px;
+		background: rgba(255,255,255,0.8);
+		font-size: 20px;
+		text-align: center;
+		line-height: 30px;
+		z-index: 5;
+		transition:all 0.8s ease;
+           transform:translateY(100%);
+
+
+	}
+	.one li a:hover + .msk{
+           transform:translateY(0);
+	}
+
+</style>
